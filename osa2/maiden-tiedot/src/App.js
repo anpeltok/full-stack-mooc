@@ -41,29 +41,34 @@ function App() {
   const switchCountry = (newCountry) => {
     if(JSON.stringify(country) !== JSON.stringify(newCountry)){
       setCountry(Object.assign({}, newCountry))
+      //setFilter('')
     }
   }
 
   const chooseRender = () => {
     const list = filterCountries()
-      if(filter === ''){
-        return null
-      }
-      else if(list.length > 10){
-        return 'Too many matches, specify another filter'
-      }
-      else if(list.length > 1){
-        return (
-          <CountryList list={list} setFilter={setFilter} />
-        )
-      }
-      if(list.length === 1){
-        switchCountry(list[0])
-        return <CountryInfo country={country} />
-      }
-      else{
-        return 'No matches'
-      }
+
+    if(country.hasOwnProperty('name')){
+      return <CountryInfo country={country} />
+    }
+
+    else if(filter === ''){
+      return null
+    }
+    else if(list.length > 10){
+      return 'Too many matches, specify another filter'
+    }
+    else if(list.length > 1){
+      return (
+        <CountryList list={list} switchCountry={switchCountry} />
+      )
+    }
+    else if(list.length === 1){
+      switchCountry(list[0])
+    }
+    if(list.length === 0){
+      return 'No matches'
+    }
   }
 
   return (

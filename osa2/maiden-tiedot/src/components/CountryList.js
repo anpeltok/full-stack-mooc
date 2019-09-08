@@ -1,9 +1,9 @@
 import React from 'react';
 
-const CountryList = ({list, setFilter}) => {
+const CountryList = ({list, switchCountry}) => {
   return(
     list.map(item => <div key={item.name}>
-      {item.name} <button onClick={() => setFilter(item.name)}>Show info</button>
+      {item.name} <button onClick={() => switchCountry(item)}>Show info</button>
       </div>)
   )
 };
