@@ -2,7 +2,8 @@ module.exports = {
     'env': {
         'commonjs': true,
         'es6': true,
-        'node': true
+        'node': true,
+        'jest': true
     },
     'extends': 'eslint:recommended',
     'globals': {
@@ -38,6 +39,9 @@ module.exports = {
         'arrow-spacing': [
             'error', { 'before': true, 'after': true }
         ],
-        'no-console': 0
+        'no-console': 0,
+        'no-unused-vars': [
+            'error', { 'argsIgnorePattern': '^_' }
+        ]
     }
 }
